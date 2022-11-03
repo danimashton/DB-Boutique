@@ -3,14 +3,16 @@ const path = require('path')
 const app = express();
 const port = 3000
 
+app.use(express.static(path.join(__dirname,'client/public')))
+
 app.get('/', (req, resp) => {
     console.log('accessing route /, METHOD = get');
-    resp.sendFile(path.join(__dirname, '/index.html'));
+    resp.sendFile(path.join(__dirname, '/client/index.html'));
 })
 
 app.get('/', (req, resp) => {
     console.log('accessing route /, METHOD = get');
-    resp.sendFile(path.join(__dirname, '/styles.css'));
+    resp.sendFile(path.join(__dirname, '/client/styles.css'));
 })
 
 app.listen(port, () => {
