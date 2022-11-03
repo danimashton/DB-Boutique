@@ -12,7 +12,7 @@ app.get('/', (req, resp) => {
 
 app.get('/', (req, resp) => {
     console.log('accessing route /, METHOD = get');
-    resp.sendFile(path.join(__dirname, '/client/styles.css'));
+    resp.sendFile(path.join(__dirname, '/client/public/styles.css'));
 })
 
 app.listen(port, () => {
