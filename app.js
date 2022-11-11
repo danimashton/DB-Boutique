@@ -20,6 +20,16 @@ app.get('/leggings', (req, resp) => {
     resp.sendFile(path.join(__dirname, './Client/leggings.html'));
 })
 
+app.get('/tops', (req, resp) => {
+    console.log('accessing route /, METHOD = get');
+    resp.sendFile(path.join(__dirname, './Client/tops.html'));
+})
+
+app.get('/accessories', (req, resp) => {
+    console.log('accessing route /, METHOD = get');
+    resp.sendFile(path.join(__dirname, './Client/accessories.html'));
+})
+
 app.get('/', (req, resp) => {
     console.log('accessing route /, METHOD = get');
     resp.sendFile(path.join(__dirname, 'Client/Public/styles.css'));
