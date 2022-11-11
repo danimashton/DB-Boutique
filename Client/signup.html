@@ -10,18 +10,23 @@
     <header>
         <h5>Free Shipping Over $100 | 30 Day Return Policy</h5>        
     </header>
-    <div id="myMenu">
-      <div class="myWrapper">
+    <div id="myMenu" class="row">
+      <!-- Structural div - This is just an empty div that is 2 cols wide - You can fill it with whatever you want, or just leave it as is!-->
+      <div class="col-sm-2"></div>
+      <div class="myWrapper col-sm-8">
         <nav>
           <div class="text-center ">
-          <a href="./"><img src="./logo1.png" height="125" width="156"></a>
+            <a href="./"><img src="./logo1.png" height="125" width="156"></a>
+          </div>
         </nav>
-        </div>
+      </div>
+      <!--There's some inline CSS here just to adjust the button. You can adjust the column width from 2 to anything greater, as long as you 
+          adjust the with for the other two divs so the columns sizes add up to 12-->
+      <div class="col-sm-2" style="display:flex; align-items: center; justify-content: center;">
+        <button id="signIn" class="btn btn-primary me-md-2" type="button">Sign In</button>                
       </div>
     </div>
-    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-      <button id= signIn class="btn btn-primary me-md-2" type="button">Sign In</button>                
-  </div>
+    
     
     <hr>
         <div class="container text-center">
