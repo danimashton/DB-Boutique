@@ -7,7 +7,7 @@ app.use(express.static(path.join(__dirname,'./Client/Public')))
 
 app.get('/', (req, resp) => {
     console.log('accessing route /, METHOD = get');
-    resp.sendFile(path.join(__dirname, '.index.html'));
+    resp.sendFile(path.join(__dirname, './Client/index.html'));
 })
 
 app.get('/signup', (req, resp) => {
