@@ -85,9 +85,10 @@ button:hover {
   width: 50%;
 }
 
-.container {
+/* .container {
+
   padding: 10px;
-}
+} */
 
 /* Clear floats */
 .clearfix::after {
@@ -104,6 +105,7 @@ button:hover {
 }
 
 .dress-card-img-top {
+  height: 200px;
   width:50%;
   border-radius: 7px 7px 0 0;
 }
@@ -179,25 +181,7 @@ button:hover {
   transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
-.surprise-bubble:hover {
-  border-radius: 999rem;
-  padding: 1rem;
-  width: 26%;
-  height: 30px;
-  background: #DB2763;
-  color: white;
-  -webkit-transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
 
-.surprise-bubble:hover a {
-  opacity: 1;
-  -webkit-transition-delay: 2s;
-  /* Safari */
-  transition-delay: 2s;
-  -webkit-transition: opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: opacity 1s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
 
 .card-button {
   margin: 55px;
