@@ -25,15 +25,17 @@ h1 {
 body {
     background-image: url(./photo.png);
     background-size: 800px;
-    background-position: 225px;
+    background-position: center;
     background-position-y: top;
-    
 }
 
 .col {
   float: left;
   width: 50%;
   font-size: 20px;
+}
+.signIn{
+  position: 50%;
 }
 
 .leggings {
@@ -149,38 +151,6 @@ button:hover {
   
 }
 
-.surprise-bubble {
-  position: absolute;
-  bottom: 12rem;
-  right: 2rem;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  background: #fff;
-  padding: 1rem;
-  color: white;
-  -webkit-transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: all 0.55s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
-.surprise-bubble a {
-  font-size: 0.65em;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: white;
-  font-family: arial;
-  text-decoration: none;
-  position: absolute;
-  top: 9px;
-  left: 20px;
-  opacity: 0;
-  -webkit-transition-delay: 2s;
-  /* Safari */
-  transition-delay: 2s;
-  -webkit-transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-  transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
-}
-
 
 
 .card-button {
@@ -209,10 +179,6 @@ button:hover {
   background: #e299b9;
 }
 
-.wish-button {
-  border: 1px solid #E06C9F;
-  color: #E06C9F;
-}
 footer {
     text-align: center;
     padding: 3px;
@@ -224,3 +190,27 @@ footer {
   #signIn {
     width: 5rem;
   }
+
+.shopping {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box
+}
+
+.shopping-container{
+  display: flex;
+}
+
+.shopping-container button{
+  cursor: pointer;
+}
+
+.counter-container{
+  width: 2.3rem;
+  height: 2.3rem;
+  margin-right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+}

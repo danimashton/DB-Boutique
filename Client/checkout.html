@@ -59,13 +59,12 @@
               <label for="card type"><b>Card Type</b></label>
               <br>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Card Type
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Visa</a></li>
-                  <li><a class="dropdown-item" href="#">Mastercard</a></li>
-                </ul>
+                <label for="card-type">Select Card Type</label>
+                <select name="card-type" id="card-type">
+                <option value="blank"></option>  
+                <option value="Visa">Visa</option>
+                <option value="Mastercard">Mastercard</option>
+                </select>
               </div>
               <br>
               <label for="card number"><b>Card Number</b></label>
@@ -74,20 +73,31 @@
               <br>
               <label for="expiry date"><b>Expiry Date</b></label>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Month
-                </button>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Visa</a></li>
-                  <li><a class="dropdown-item" href="#">Mastercard</a></li>
-                </ul>
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Year
-                  </button>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Visa</a></li>
-                    <li><a class="dropdown-item" href="#">Mastercard</a></li>
-                  </ul>
+                <label for="month">Month</label>
+                <select name="month" id="month">
+                <option value="blank"></option>  
+                <option value="Jan">Jan</option>
+                <option value="Feb">Feb</option>
+                <option value="March">March</option>
+                <option value="April">April</option>
+                <option value="May">May</option>
+                <option value="June">June</option>
+                <option value="July">July</option>
+                <option value="Aug">Aug</option>
+                <option value="Sept">Sept</option>
+                <option value="Oct">Oct</option>
+                <option value="Nov">Nov</option>
+                <option value="Dec">Dec</option>      
+                </select>
+                <label for="year">Year</label>
+                <select name="year" id="year">
+                <option value="blank"></option>  
+                <option value="year">2022</option>
+                <option value="year">2023</option>
+                <option value="year">2024</option>
+                <option value="year">2025</option>
+                <option value="year">2026</option>
+                </select>
               </div>
               <br>
               </label>         

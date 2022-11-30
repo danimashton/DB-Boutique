@@ -35,6 +35,11 @@ app.get('/checkout', (req, resp) => {
     resp.sendFile(path.join(__dirname, './Client/checkout.html'));
 })
 
+app.get('', (req, resp) => {
+    console.log('accessing route /, METHOD = get');
+    resp.sendFile(path.join(__dirname, './Client/404.html'));
+})
+
 app.get('/', (req, resp) => {
     console.log('accessing route /, METHOD = get');
     resp.sendFile(path.join(__dirname, 'Client/Public/styles.css'));
