@@ -1,16 +1,16 @@
 const express = require ('express');
 const path = require('path')
 const bodyParser = require('body-parser');
-const { engine } = require('express-handlebars');
-const {getConnection} = require('../db');
+// const { engine } = require('express-handlebars');
+const {getConnection} = require('/db/mongoose.js');
 const userService = require('./users_module/service')
 
 const app = express();
 const port = 3000
 
-app.engine('handlebars', engine ());
-app.set('view engine', 'handlebars');
-app.set('views', './views');
+// app.engine('handlebars', engine ());
+// app.set('view engine', 'handlebars');
+// app.set('views', './views');
 
 app.use(express.static(path.join(__dirname,'./Client/Public')))
 app.use(bodyParser.json())
