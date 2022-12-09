@@ -14,7 +14,10 @@ const handleSignup = async (event) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(formValue),
+      body: JSON.stringify({
+        password: formValue.password,
+        email: formValue.email,
+      }),
     });
     console.log(response);
     if (response.status === 200) {

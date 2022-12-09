@@ -25,9 +25,52 @@ app.get("/signup", (req, resp) => {
   resp.sendFile(path.join(__dirname, "./Client/signup.html"));
 });
 
+app.post("/signup", async (req, res) => {
+  console.log(req.body);
+  try {
+    await userService.storeUser(req.body);
+  } catch (err) {
+    res.status(400).json({
+      error: err,
+    });
+    return;
+  }
+  res.status(200).json({
+    message: "user created successfully",
+  });
+});
+
 app.get("/signin", (req, resp) => {
   console.log("accessing route /, METHOD = get");
   resp.sendFile(path.join(__dirname, "./Client/signin.html"));
+});
+
+app.post("/signin", async (req, res) => {
+  const body = req.body
+
+  if(!body.email || !body.password || !body.email.includes('@') || body.password.length === 0 ) {
+    res.status(400).json({
+      error:"Invalid User Information, please check your input"
+    })
+    return;
+  }
+
+  try {
+    const userId = await userService.signIn(body)
+    if(userId) {
+      res.status(200).json({
+        userId
+    })
+    }
+  } catch (err) {
+    res.status(400).json({
+      error: err,
+    });
+    return;
+  }
+  res.status(200).json({
+    message: "user signed in successfully",
+  });
 });
 
 app.get("/leggings", (req, resp) => {
@@ -59,35 +102,9 @@ app.get("/", (req, resp) => {
   resp.sendFile(path.join(__dirname, "Client/Public/styles.css"));
 });
 
-app.post("/signup", async (req, res) => {
-  console.log(req.body);
-  try {
-    await userService.storeUser(req.body);
-  } catch (err) {
-    res.status(400).json({
-      error: err,
-    });
-    return;
-  }
-  res.status(200).json({
-    message: "user created successfully",
-  });
-});
 
-app.post("/signin", async (req, res) => {
-  console.log(req.body);
-  try {
-    await userService.storeUser(req.body);
-  } catch (err) {
-    res.status(400).json({
-      error: err,
-    });
-    return;
-  }
-  res.status(200).json({
-    message: "user signed in successfully",
-  });
-});
+
+
 
 // app.get('user', (req, res) => {
 //     res.render('profile', {

@@ -8,7 +8,7 @@ const getConnection = async () => {
   } else {
     console.log("creating new connection");
     connection = await mongoose.connect(
-      "mongodb+srv://danimashton:oAjHXesVPgmFp2r1@cluster0.odqunjl.mongodb.net/dbboutique?retryWrites=true&w=majority/"
+      "mongodb+srv://danimashton:oAjHXesVPgmFp2r1@cluster0.odqunjl.mongodb.net/dbboutique?retryWrites=true&w=majority"
     );
     return connection;
   }
