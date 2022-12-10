@@ -1,6 +1,6 @@
 const userModel = require('./model.js')
 const bcryptjs = require('bcryptjs')
-
+const { createToken } = require('./auth')
 const storeUser = async (userData) => {
     
     try {
@@ -16,6 +16,17 @@ const storeUser = async (userData) => {
     
 }
 
+const getUserByID = async (userId) =>{
+    try {
+        const user = await userModel.findOne({
+            _id: userId
+        });
+        return user
+    } catch(err) {
+        throw 'failed to create user, please check your input'
+    }
+}
+
 const signIn = async (userData) => {
 
         try {
@@ -29,7 +40,11 @@ const signIn = async (userData) => {
             if(!passwordMatch) {
                 throw "Invalid signin information"
             }
-            return user.Id
+            const token = await createToken(user.id)
+            return {
+                userId: user.id,
+                token
+            }
         } catch (error) {
             throw error
         }
@@ -37,4 +52,5 @@ const signIn = async (userData) => {
 module.exports = {
     storeUser,
     signIn,
+    getUserById,
 }

@@ -16,6 +16,9 @@ const signIn = async (event) => {
   });
 
   console.log(response)
+  if(response.status === 200) {
+    window.location = '/dashboard'
+  }
 }
 
 const signInButton = document.getElementById ('signInBtn')

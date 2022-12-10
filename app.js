@@ -4,6 +4,12 @@ const bodyParser = require("body-parser");
 // const { engine } = require('express-handlebars');
 const { getConnection } = require("./db/mongoose");
 const userService = require("./users_module/service");
+const cookieParser = require("cookie-parser");
+const { auth } = require('./users_module/auth')
+const { restart } = require("nodemon");
+
+
+
 
 const app = express();
 const port = 3000;
@@ -14,6 +20,7 @@ const port = 3000;
 
 app.use(express.static(path.join(__dirname, "./Client/Public")));
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.get("/", (req, resp) => {
   console.log("accessing route /, METHOD = get");
@@ -40,6 +47,21 @@ app.post("/signup", async (req, res) => {
   });
 });
 
+app.get('/dashboard', auth, async (res, req) => {
+  try{
+    const user = await userService.getUserById(req.userId)
+    res.render('profile',{
+      layout: 'profile',
+      email: user.email,
+    })
+  } catch(error){
+    res.redirect('/signin')
+    res.end()
+    return;
+  }
+   
+})
+
 app.get("/signin", (req, resp) => {
   console.log("accessing route /, METHOD = get");
   resp.sendFile(path.join(__dirname, "./Client/signin.html"));
@@ -56,10 +78,13 @@ app.post("/signin", async (req, res) => {
   }
 
   try {
-    const userId = await userService.signIn(body)
-    if(userId) {
+    const {userId, token} = await userService.signIn(body)
+    if(userId && token) {
+      res.cookie('token', token, {maxAge: 900000});
+      res.set('authorization', token)
       res.status(200).json({
-        userId
+        userId,
+        token,
     })
     }
   } catch (err) {
