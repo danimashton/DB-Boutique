@@ -1,32 +1,29 @@
 const signIn = async (event) => {
-  event.preventDefault()
+  event.preventDefault();
   const formData = {
-    email: document.getElementById ('emailInput').value,
-    password: document.getElementById ('passwordInput').value,
-  }
+    email: document.getElementById("emailInput").value,
+    password: document.getElementById("passwordInput").value,
+  };
   const response = await fetch("/signIn", {
-    method: "POST", 
+    method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      password: formValue.password,
-      email: formValue.email,
+      password: formData.password,
+      email: formData.email,
     }),
   });
 
-  console.log(response)
-  if(response.status === 200) {
-    window.location = '/dashboard'
+  console.log(response);
+  if (response.status === 200) {
+    window.location = "/dashboard";
   }
-}
+};
 
-const signInButton = document.getElementById ('signInBtn')
+const signInButton = document.getElementById("signInBtn");
 
-signInButton.addEventListener('click', signIn)
-
-
-
+signInButton.addEventListener("click", signIn);
 
 // const handleSignin = async (event) => {
 //     event.preventDefault();
@@ -34,12 +31,12 @@ signInButton.addEventListener('click', signIn)
 //       email: document.getElementById("emailID").value,
 //       password: document.getElementById("password").value,
 //     };
-  
+
 //     const formDataValidated = validateSignin(formValue);
-  
+
 //     if (formDataValidated) {
 //       const response = await fetch("/signin", {
-//         method: "POST", 
+//         method: "POST",
 //         headers: {
 //           "Content-Type": "application/json",
 //         },
@@ -56,26 +53,26 @@ signInButton.addEventListener('click', signIn)
 //       }
 //     }
 //   };
-  
+
 //   const validateSignin = (formValue) => {
 //     if (!formValue.email || formValue.email === "") {
 //       return false;
 //     }
-  
+
 //     if (!formValue.password || formValue.password === "") {
 //       return false;
 //     }
-  
+
 //     if (!formValue.email.includes("@")) {
 //       return false;
 //     }
-  
+
 //     if (formValue.password !== formValue.repeatPassword) {
 //       return false;
 //     }
 //     return true;
 //   };
-  
+
 //   const signinButton = document.getElementById("signInBtn");
 //   signinButton.addEventListener("click", handleSignin),
 //     showError("Sample Error Message");
