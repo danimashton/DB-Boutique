@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
-// const { engine } = require('express-handlebars');
+const { engine } = require('express-handlebars');
 const { getConnection } = require("./db/mongoose");
 const userService = require("./users_module/service");
 const cookieParser = require("cookie-parser");
@@ -14,9 +14,9 @@ const { restart } = require("nodemon");
 const app = express();
 const port = 3000;
 
-// app.engine('handlebars', engine ());
-// app.set('view engine', 'handlebars');
-// app.set('views', './views');
+app.engine('handlebars', engine ());
+app.set('view engine', 'handlebars');
+app.set('views', './views');
 
 app.use(express.static(path.join(__dirname, "./Client/Public")));
 app.use(bodyParser.json());
@@ -46,6 +46,16 @@ app.post("/signup", async (req, res) => {
     message: "user created successfully",
   });
 });
+
+app.get('/user/email', (req, resp) =>{
+  req.params.email
+  const user = userService.getUser(email)
+  res.render('profile', {
+    layout: 'profile',
+    name: user.name,
+    email: user.email,
+  })
+})
 
 app.get('/dashboard', auth, async (res, req) => {
   try{
@@ -131,11 +141,11 @@ app.get("/", (req, resp) => {
 
 
 
-// app.get('user', (req, res) => {
-//     res.render('profile', {
-//         email: ""
-//     })
-// })
+app.get('user', (req, res) => {
+    res.render('profile', {
+        email: ""
+    })
+})
 
 app.listen(port, async () => {
   console.log("listening on port " + port);

@@ -49,8 +49,20 @@ const signIn = async (userData) => {
             throw error
         }
 }
+
+const getUser = async (email) => {
+    try {
+        const user = await userModel.findOne({
+        email: email
+        });
+    return user;
+    } catch (error) {
+            throw 'unable to find user'
+    }
+}   
+
 module.exports = {
     storeUser,
+    getUser,
     signIn,
-    getUserById,
 }
